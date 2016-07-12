@@ -1,6 +1,14 @@
-import $ from 'jquery';
-import './style.scss';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import SearchBar from './components/search_bar';
+// all imports go at the top
 
-let num = 0;
+const App = () => {
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  );
+};
 
-setInterval(() => { $('#main').html(`You've been on this page for ${num++} seconds.`);  }, 1000);
+ReactDOM.render(<App />, document.getElementById('main'));
