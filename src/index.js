@@ -5,6 +5,7 @@ import youtubeSearch from './youtube-api';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 import debounce from 'lodash.debounce';
+import './style.scss';
 // all imports go at the top
 
 class App extends Component {
@@ -28,9 +29,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <SearchBar onSearchChange={text => this.search(text)} />
-        <VideoDetail video={this.state.selectedVideo} />
-        <VideoList onVideoSelect={selectedVideo => this.setState({ selectedVideo })} videos={this.state.videos} />
+        <SearchBar id="searchbar" onSearchChange={text => this.search(text)} />
+        <div id="video-section">
+          <VideoDetail video={this.state.selectedVideo} />
+          <VideoList onVideoSelect={selectedVideo => this.setState({ selectedVideo })} videos={this.state.videos} />
+        </div>
       </div>
     );
   }
