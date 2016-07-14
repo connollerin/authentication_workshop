@@ -1,23 +1,22 @@
-$fontcolor:  rgb(10%, 10%, 10%);
+$fontcolor:  rgb(100%, 100%, 100%);
 $backgroundcolor: rgb(98%, 98%, 98%);
 
 
 body {
   font-family: "Roboto", sans-serif;
   color: $fontcolor;
-  background-color: $backgroundcolor;
+  // background-color: $backgroundcolor;
+  background: url('https://i.ytimg.com/vi/r9sRycljzlw/maxresdefault.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: 50px;
   padding: 20px;
-}
-
-.main{
-  display: flex;
-  flex-direction: column;
 }
 
 
 #search-bar {
   margin-bottom: 50px;
+  background-color: $backgroundcolor;
 
   input {
     font-size: 1.5em;
