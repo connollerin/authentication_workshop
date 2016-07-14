@@ -7,11 +7,17 @@ body {
   color: $fontcolor;
   background-color: $backgroundcolor;
   margin: 50px;
+  padding: 20px;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
 }
 
 
 #search-bar {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 
   input {
     font-size: 1.5em;
@@ -22,6 +28,7 @@ body {
 
 #video-section {
   display: flex;
+  flex-direction: row;
 
   li {
     list-style: none;
@@ -32,6 +39,15 @@ body {
   }
   li:hover {
     background: darken( $backgroundcolor, 10% );
+  }
+
+}
+
+@media only screen and (max-width: 1000px) {
+
+  #video-section {
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 
 }
