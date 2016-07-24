@@ -5,7 +5,7 @@ How to implement authentication:
 
 Ok so before we start, we need to go create a Google Developers Console project and client ID.
 
-_Instructions gathered from (https://developers.google.com/identity/sign-in/web/devconsole-project)._
+_Instructions gathered from (https://developers.google.com/identity/sign-in/web/devconsole-project) and (https://developers.google.com/identity/sign-in/web/sign-in)._
 
 First go to: 
 [google's API console](https://console.developers.google.com/project/_/apiui/apis/library)
@@ -28,7 +28,7 @@ The Authorized redirect URI field does not require a value. Redirect URIs are no
 
 Press the Create button.
 
-From the resulting OAuth client dialog box, copy the Client ID . The Client ID lets your app access enabled Google APIs.
+From the resulting OAuth client dialog box, copy the Client ID, you will use it soon!! The Client ID lets your app access enabled Google APIs.
 
 Ok now we can add google sign in to our website! Yay!
 
@@ -40,8 +40,43 @@ Now go to your index.html file and make sure you have the script tag to include 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 ```
 
+Now use your Client ID that you copied from earlier and add it in a meta tag to allow the api to work!
 
+```
+<meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+```
 
+Now we are initialized, and need to make a button to allow sign in! You can personalize your own or use the google default pre-styled one here.
+```
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+```
 
+Now you can access the user's profile information when they try to log in with google. Add this excerpt to your scripts tag.
 
+```
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail());
+}
+```
 
+To allow a user to sign out, you need to add a sign out button and corresponding sign out javascript function.
+
+```
+<a href="#" onclick="signOut();">Sign out</a>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
+```
+
+Now we have a functioning login/logout feature to our react app! WOO!
+
+![woo](https://m.popkey.co/9d0c9e/K01R6.gif)
