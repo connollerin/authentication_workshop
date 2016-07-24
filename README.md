@@ -1,7 +1,9 @@
-## Welcome to our Authentication workshop!
+# Welcome to our Authentication workshop!
 ![soexcited](https://admin.mashable.com/wp-content//uploads/2013/07/Friends1.gif)
 
-How to implement authentication:
+How to implement google authentication:
+
+## Step one: Get the Client ID
 
 Ok so before we start, we need to go create a Google Developers Console project and client ID.
 
@@ -34,6 +36,8 @@ Ok now we can add google sign in to our website! Yay!
 
 ![yay](https://m.popkey.co/9b305c/y6wJ7.gif)
 
+## Step two: Initialize the api
+
 Now go to your index.html file and make sure you have the script tag to include the google api library.
 
 ```
@@ -45,6 +49,9 @@ Now use your Client ID that you copied from earlier and add it in a meta tag to 
 ```
 <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
 ```
+
+## Step three: Add in buttons and signin() functions
+
 
 Now we are initialized, and need to make a button to allow sign in! You can personalize your own or use the google default pre-styled one here.
 ```
