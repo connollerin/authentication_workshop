@@ -7,8 +7,9 @@
     <link href="build/bundle.css" rel="stylesheet">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-    <script>
+    <!-- <script>
       gapi.load('auth2', function() {
+        console.log("hi");
         gapi.auth2.init();
       });
       function onSignIn(googleUser) {
@@ -24,12 +25,13 @@
           console.log('User signed out.');
         });
       }
-    </script>
+    </script> -->
   </head>
   <body>
     <div id="main">Howdy!</div>
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <a href="#" onclick="signOut();">Sign out</a>
+    <div id="google-login"></div>
+    <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="#" onclick="signOut();">Sign out</a> -->
   </body>
   <script src="build/bundle.js"  charset="utf-8"></script>
 </html>

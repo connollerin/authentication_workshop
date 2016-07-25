@@ -1,43 +1,18 @@
-import React, { Component } from 'react';
+// 'use strict';
+
+import React from 'react';
 import ReactDOM from 'react-dom';
-import SearchBar from './components/search_bar';
-import youtubeSearch from './youtube-api';
-import VideoList from './components/video_list';
-import VideoDetail from './components/video_detail';
-import debounce from 'lodash.debounce';
-import './style.scss';
-// all imports go at the top
+import GoogleLogin from 'react-google-login';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      videos: [],
-      selectedVideo: null,
-    };
-    this.search('pixar');
-    this.search = debounce(this.search, 300);
-  }
-  search(text) {
-    youtubeSearch(text).then(videos => {
-      this.setState({
-        videos,
-        selectedVideo: videos[0],
-      });
-    });
-  }
-  render() {
-    return (
-      <div className="main">
-        <SearchBar id="searchbar" onSearchChange={text => this.search(text)} />
-        <br></br>
-        <div id="video-section">
-          <VideoDetail video={this.state.selectedVideo} />
-          <VideoList onVideoSelect={selectedVideo => this.setState({ selectedVideo })} videos={this.state.videos} />
-        </div>
-      </div>
-    );
-  }
-}
+const responseGoogle = (response) => {
+  console.log(response);
+};
 
-ReactDOM.render(<App />, document.getElementById('main'));
+ReactDOM.render(
+  <GoogleLogin
+    clientId="63478560666-m1i4mi095m2ijn3mattc3ht3rncrmr3j.apps.googleusercontent.com"
+    buttonText="Login"
+    callback={responseGoogle}
+  />,
+  document.getElementById('googleButton')
+);
